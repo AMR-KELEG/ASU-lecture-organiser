@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205132418) do
+ActiveRecord::Schema.define(version: 20151205164107) do
 
   create_table "lectures", force: :cascade do |t|
     t.string   "name"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 20151205132418) do
   create_table "slides", force: :cascade do |t|
     t.string   "path"
     t.integer  "lecture_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "page_number"
   end
 
 end

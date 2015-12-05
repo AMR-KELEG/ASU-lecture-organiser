@@ -1,17 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Path:</strong>
-  <%= @slide.path %>
-</p>
-
-<p>
   <strong>Lecture:</strong>
-  <%= @slide.lecture_id %>
+  <%= @slide.lecture.name %>
 </p>
 
-<%= image_tag @slide.path%>
+<div class="page_number" style="text-align: center;">
+  <h2> <%= "Page #{@slide.page_number + 1} of #{@slide.lecture.slides.length}" %> </h2>
+</div>
 
+<div class="slide" style="text-align: center;">
+  <%= image_tag @slide.path%>
+</div>
+
+</br>
+
+<div class="navigation" style="text-align: center;">
+  <%= link_to 'Previous',@slide.previous %> |
+  <%= link_to 'Next', @slide.next %>
+</div>
+
+</br>
 
 <%= link_to 'Edit', edit_slide_path(@slide) %> |
 <%= link_to 'Back', slides_path %>
