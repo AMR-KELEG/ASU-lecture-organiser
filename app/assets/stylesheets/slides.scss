@@ -1,3 +1,20 @@
-// Place all the styles related to the slides controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.arrow{
+  font-size: 20em;
+  padding-top: 150%;
+}
+
+a{
+  text-decoration:none;
+
+  &:hover{
+    color: black;
+    background-color: transparent;
+  }
+}
+
+.slide-container {
+  min-width: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
