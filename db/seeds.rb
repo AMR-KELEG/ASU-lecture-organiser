@@ -16,7 +16,7 @@ Dir.foreach('./data/lectures') do |lecture_file|
 
   Dir.foreach('./data/slides/' + lecture_file.split('.')[0]) do |slide_file|
     next if slide_file == '.' or slide_file == '..'
-    slide = Slide.new(path: '/data/slides/' + lecture_file.split('.')[0] + '/' + slide_file)
+    slide = Slide.new(path: 'data/slides/' + lecture_file.split('.')[0] + '/' + slide_file)
     slide.lecture = lecture
     slide.save
   end
