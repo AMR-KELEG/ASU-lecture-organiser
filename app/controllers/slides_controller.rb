@@ -4,7 +4,7 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.json
   def index
-    @slides = Slide.all.order(path: :asc)
+    @slides = Slide.all.order(page_number: :asc)
   end
 
   # GET /slides/1
