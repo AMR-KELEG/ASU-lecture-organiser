@@ -14,7 +14,7 @@
     <% @lectures.each do |lecture| %>
       <tr>
         <td><%= lecture.name %></td>
-        <td><%= link_to 'Show', lecture %></td>
+        <td><%= link_to 'Show', lecture.slides.order(page_number: :asc).first %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
