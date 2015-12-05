@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @slide.path %>
+</p>
+
+<p>
+  <strong>Lecture:</strong>
+  <%= @slide.lecture_id %>
+</p>
+
+<%= link_to 'Edit', edit_slide_path(@slide) %> |
+<%= link_to 'Back', slides_path %>
