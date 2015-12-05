@@ -10,6 +10,7 @@ class LecturesController < ApplicationController
   # GET /lectures/1
   # GET /lectures/1.json
   def show
+    @slides = Lecture.find(params[:id]).slides.order(path: :asc)
   end
 
   # GET /lectures/new

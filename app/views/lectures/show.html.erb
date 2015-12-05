@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @lecture.name %>
-</p>
+<h1 style="text-align: center;"><%= @lecture.name %></h1>
+
+<h3>Slides</h3>
+
+<ol>
+  <% @slides.each do |slide| %>
+  <li> <%= link_to slide.path, slide %> </li>
+  <% end %>
+</ol>
+
+<br>
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>
