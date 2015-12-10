@@ -8,6 +8,7 @@
 
 Lecture.destroy_all
 Slide.destroy_all
+Comment.destroy_all
 
 Dir.foreach('./public/data/lectures') do |lecture_file|
   next if lecture_file == '.' or lecture_file == '..'
@@ -24,4 +25,11 @@ Dir.foreach('./public/data/lectures') do |lecture_file|
     slide.save
   end
   lecture.save
+end
+
+Slide.all.each do |slide|
+  slide.comments.create!([
+    {text: ('a'..'z').to_a.shuffle[0,20].join},
+    {text: ('a'..'z').to_a.shuffle[0,20].join}
+  ])
 end
