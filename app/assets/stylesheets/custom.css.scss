@@ -1,0 +1,14 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+header {
+  background-color: #122d58;
+}
+
+.navbar-nav {
+  li {
+    a {
+      color: white;
+    }
+  }
+}
