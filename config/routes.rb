@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'lectures#index'
+
   resources :slides do
     resources :comments, only: [:create, :destroy]
   end
