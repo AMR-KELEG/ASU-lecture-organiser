@@ -1,6 +1,6 @@
 <div class="comment">
   <div>
-    <%= link_to comment.user.username, user_url(comment.user) %>
+    <%= link_to comment.user.username, user_url(comment.user) unless comment.user.nil? %>
     <%= link_to 'Delete', [@slide, comment], method: :delete%>
   </div>
   <div>
