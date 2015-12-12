@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :slides do
     resources :comments, only: [:create, :destroy]
   end
