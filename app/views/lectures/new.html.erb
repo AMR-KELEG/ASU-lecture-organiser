@@ -1,5 +1,25 @@
 <h1>New Lecture</h1>
 
-<%= render 'form' %>
+<% if !@lecture.errors.empty? %>
+   <div class = "alert alert-error">
+      
+      <ul>
+         <% @lecture.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+      
+   </div>
+<% end %>
+
+<div class = "well">
+   <%= form_for @lecture, html: { multipart: true } do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :name %>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>
 
 <%= link_to 'Back', lectures_path %>
