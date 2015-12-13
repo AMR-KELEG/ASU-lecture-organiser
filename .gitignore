@@ -16,5 +16,5 @@
 !/log/.keep
 /tmp
 
-data/slides/*
-data/lectures/*
+data/*
+Gemfile.lock
