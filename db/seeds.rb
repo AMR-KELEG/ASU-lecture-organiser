@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.destroy_all
+User.create! username: "amr", password: "123"
+20.times do |i|
+  User.create! username: "user#{i}", password: "pass#{i}"
+end
+
 Lecture.destroy_all
 Slide.destroy_all
 Comment.destroy_all
@@ -28,8 +34,9 @@ Dir.foreach('./public/data/lectures') do |lecture_file|
 end
 
 Slide.all.each do |slide|
-  slide.comments.create!([
-    {text: ('a'..'z').to_a.shuffle[0,20].join},
-    {text: ('a'..'z').to_a.shuffle[0,20].join}
-  ])
+  10.times do
+    comment = slide.comments.new text: ('a'..'z').to_a.shuffle[0,20].join
+    comment.user = User.order("RANDOM()").first
+    comment.save!
+  end
 end

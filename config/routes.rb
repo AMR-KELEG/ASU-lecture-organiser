@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  root 'lectures#index'
+
   resources :slides do
     resources :comments, only: [:create, :destroy]
   end
   resources :lectures
+
+  get 'signup' => 'users#new', as: "signup"
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

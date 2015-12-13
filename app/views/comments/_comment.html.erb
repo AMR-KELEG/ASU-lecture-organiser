@@ -1,7 +1,11 @@
 <div class="comment">
-  <div>
-    <%= content_tag :span, "(#{time_ago_in_words comment.created_at} ago)", class: "comment-title"%>
+  <div class="comment-head">
+    <%= link_to comment.user.username, user_url(comment.user) unless comment.user.nil? %>
+    <%= content_tag :span, "(#{time_ago_in_words comment.created_at} ago)", class: "comment-title"%> |
     <%= link_to 'Delete', [@slide, comment], method: :delete%>
   </div>
-  <div><%= simple_format comment.text %></div>
+  <div class="comment-content">
+    <%= simple_format comment.text %>
+  </div>
+
 </div>

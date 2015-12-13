@@ -29,14 +29,14 @@
   <div>
     <%= render @slide.comments %>
   </div>
-  
+
   <%= form_for([@slide, @slide.comments.new]) do |f| %>
     <div class="field">
       <%= f.label "new comment" %><br>
-      <%= f.text_area :text, size: "70*5" %>
+      <%= f.text_area :text, size: "70*5", class: "form-control" %>
     </div>
     <div class="actions">
-      <%= f.submit "Post Comment"%>
+      <%= f.submit "Post Comment", class: 'btn btn-default'%>
     </div>
   <% end %>
 </div>
