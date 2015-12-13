@@ -16,8 +16,10 @@
    <%= form_for @lecture, html: { multipart: true } do |f| %>
       <%= f.label :title %>
       <%= f.text_field :name %>
+
       <%= f.label :attachment %>
       <%= f.file_field :attachment %>
+      
       <%= f.submit "Save", class: "btn btn-primary" %>
    <% end %>
 </div>

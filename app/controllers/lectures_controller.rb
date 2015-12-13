@@ -10,7 +10,6 @@ class LecturesController < ApplicationController
   # GET /lectures/1
   # GET /lectures/1.json
   def show
-    @images = Dir.glob("app/assets/images/#{@lecture.attachment.file.filename}*.png")
     @slides = Lecture.find(params[:id]).slides.order(page_number: :asc)
   end
 

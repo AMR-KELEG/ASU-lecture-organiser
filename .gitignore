@@ -16,6 +16,7 @@
 !/log/.keep
 /tmp
 
-data/*
+public/data/*
 Gemfile.lock
 *~
+public/uploads/tmp/*

@@ -1,9 +1,10 @@
 # encoding: utf-8
+require 'fileutils'
 
 class LectureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-   include CarrierWave::RMagick
+  include CarrierWave::RMagick
    
   # include CarrierWave::MiniMagick
 
@@ -14,7 +15,7 @@ class LectureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "data/lectures/"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -34,13 +35,40 @@ class LectureUploader < CarrierWave::Uploader::Base
   
   process :explode_to_images
   
-  def explode_to_images
-    pdf = Magick::ImageList.new(file.path) 
-    pdf.write("app/assets/images/#{filename}.png")
+
+  #thumb = pdf.scale(300, 300)
+  #thumb.write "doc.png"
+
+
+  def check_dir(file_path)
+    dirname = File.dirname(file_path)
+    unless File.directory?(dirname)
+      FileUtils.mkdir_p(dirname)
+    end
   end
-  
-  def filename
-    "#{secure_token}.#{file.extension}" if original_filename.present?
+
+  def explode_to_images
+    model.path = lecture_path(file.basename)
+    model.save!
+    pdf = Magick::ImageList.new(file.path)
+    counter = 0
+    pdf.each do |page|
+      slide_path = image_path(file.basename, counter)
+      model.slides.create! path:slide_path, page_number: counter
+
+      check_dir "public/#{slide_path}"
+      page.write "public/#{slide_path}"
+      
+      counter += 1
+    end
+  end
+
+  def image_path(lecture_title, page_num)
+    "/data/slides/#{model.name}/#{page_num}.png"
+  end
+
+  def lecture_path(lecture_title)
+    "/data/lectures/#{lecture_title}.pdf"
   end
 
   protected
