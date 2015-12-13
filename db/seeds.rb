@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-User.create! username: "amr", password: "123"
+User.create! username: "admin", password: "admin"
 20.times do |i|
   User.create! username: "user#{i}", password: "pass#{i}"
 end
@@ -19,7 +19,7 @@ Comment.destroy_all
 Dir.foreach('./public/data/lectures') do |lecture_file|
   next if lecture_file == '.' or lecture_file == '..'
   
-  lecture = Lecture.new(name: lecture_file)
+  lecture = Lecture.new(name: lecture_file, path: "/data/lectures/#{lecture_file}")
 
   Dir.foreach('./public/data/slides/' + lecture_file.split('.')[0]) do |slide_file|
     next if slide_file == '.' or slide_file == '..'
