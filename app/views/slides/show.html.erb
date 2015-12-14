@@ -11,7 +11,7 @@
 
 <div class="slide-container">
 
-  <%= link_to @slide.previous do %>
+  <%= link_to @slide.previous, id: "prev" do %>
     <div class="arrow">&#8249;</div>
   <% end %>
 
@@ -19,7 +19,7 @@
     <%= link_to image_tag(@slide.path), @slide.next%>
   </div>
 
-  <%= link_to @slide.next do%>
+  <%= link_to @slide.next, id: "next" do%>
     <div class="arrow">&#8250;</div>
   <% end %>
 
