@@ -10,7 +10,7 @@ class LecturesController < ApplicationController
   # GET /lectures/1
   # GET /lectures/1.json
   def show
-    @slides = Lecture.find(params[:id]).slides.order(page_number: :asc)
+    @slides = @lecture.slides.order(page_number: :asc)
   end
 
   # GET /lectures/new
@@ -65,7 +65,7 @@ class LecturesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lecture
-      @lecture = Lecture.find(params[:id])
+      @lecture = Lecture.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
