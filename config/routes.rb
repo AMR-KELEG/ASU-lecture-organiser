@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'lectures#index'
 
-  resources :slides do
-    resources :comments, only: [:create, :destroy]
+  resources :lectures do
+    resources :slides do
+      resources :comments, only: [:create, :destroy]
+    end
   end
-  resources :lectures
 
   get 'signup' => 'users#new', as: "signup"
   resources :users
