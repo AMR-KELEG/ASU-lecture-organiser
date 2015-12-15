@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p style="text-align: center">
   <strong>Lecture:</strong>
   <%= @slide.lecture.name %>
@@ -25,5 +23,21 @@
 
 </div>
 
-<!-- comments was here  -->
+<div class="comments">
+  <div>
+    <%= render @slide.comments %>
+  </div>
+
+  <%= form_for([@slide, @slide.comments.new]) do |f| %>
+    <div class="field">
+      <%= f.label "new comment" %><br>
+      <%= f.text_area :text, size: "70*5", class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Post Comment", class: 'btn btn-default'%>
+    </div>
+  <% end %>
+</div>
 </br>
+
+<%= link_to 'Back', @lecture %>

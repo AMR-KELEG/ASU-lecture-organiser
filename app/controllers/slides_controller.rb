@@ -18,8 +18,8 @@ class SlidesController < ApplicationController
   # end
 
   # GET /slides/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /slides
   # POST /slides.json
