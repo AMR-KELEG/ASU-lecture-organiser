@@ -25,7 +25,7 @@
 
 <div class="comments">
   <div>
-    <%= render @slide.comments %>
+    <%= render @slide.comments.order(created_at: :desc) %>
   </div>
 
   <%= form_for([@slide, @slide.comments.new]) do |f| %>
