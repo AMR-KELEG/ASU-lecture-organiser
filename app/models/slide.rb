@@ -6,10 +6,10 @@ class Slide < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   def next
-    slide = lecture.slides.find_by(page_number: (page_number + 1 - 1) % lecture.slides.count + 1)
+    self.lecture.slides.find_by(page_number: page_number + 1)
   end
 
   def previous
-    slide = lecture.slides.find_by(page_number: (page_number - 1 - 1) % lecture.slides.count + 1)
+    self.lecture.slides.find_by(page_number: page_number - 1)
   end
 end
