@@ -1,6 +1,9 @@
 class Slide < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :page_number, use: [:finders]
+
   belongs_to :lecture
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   def next
     self.lecture.slides.find_by(page_number: page_number + 1)

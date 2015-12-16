@@ -6,20 +6,20 @@
 </p>
 
 <div class="page_number" style="text-align: center;">
-  <h2> <%= "Page #{@slide.page_number + 1} of #{@slide.lecture.slides.count}" %> </h2>
+  <h2> <%= "Page #{@slide.page_number} of #{@slide.lecture.slides.count}" %> </h2>
 </div>
 
 <div class="slide-container">
 
-  <%= link_to @slide.previous, id: "prev" do %>
+  <%= link_to [@lecture, @slide.previous], id: "prev" do %>
     <div class="arrow">&#8249;</div>
   <% end %>
 
   <div>
-    <%= link_to image_tag(@slide.path), @slide.next%>
+    <%= link_to image_tag(@slide.path), [@lecture, @slide.next]%>
   </div>
 
-  <%= link_to @slide.next, id: "next" do%>
+  <%= link_to [@lecture, @slide.next], id: "next" do%>
     <div class="arrow">&#8250;</div>
   <% end %>
 
@@ -27,21 +27,10 @@
 
 <div class="comments">
   <div>
-    <%= render @slide.comments %>
+    <%= render @slide.comments.order(created_at: :desc) %>
   </div>
-
-  <%= form_for([@slide, @slide.comments.new]) do |f| %>
-    <div class="field">
-      <%= f.label "new comment" %><br>
-      <%= f.text_area :text, size: "70*5", class: "form-control" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Post Comment", class: 'btn btn-default'%>
-    </div>
-  <% end %>
+  <%= render '/comments/form' %>
 </div>
-
 </br>
 
-<%= link_to 'Edit', edit_slide_path(@slide) %> |
-<%= link_to 'Back', slides_path %>
+<%= link_to 'Back', @lecture %>
