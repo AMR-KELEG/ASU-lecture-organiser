@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
   private
     def set_slide
-      @slide = Slide.friendly.find(params[:slide_id])
+      @slide = Slide.find(params[:slide_id])
     end
 
     def comment_params

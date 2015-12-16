@@ -65,11 +65,11 @@ class SlidesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lecture
-      @lecture = Lecture.friendly.find(params[:lecture_id])
+      @lecture = Lecture.find(params[:lecture_id])
     end
 
     def set_slide
-      @slide = @lecture.slides.friendly.find(params[:id])
+      @slide = @lecture.slides.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

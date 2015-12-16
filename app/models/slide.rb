@@ -1,6 +1,6 @@
 class Slide < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :page_number
+  friendly_id :page_number, use: [:finders]
 
   belongs_to :lecture
   has_many :comments, dependent: :destroy

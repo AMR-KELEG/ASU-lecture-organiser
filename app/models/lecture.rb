@@ -1,6 +1,6 @@
 class Lecture < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
+  friendly_id :slug_candidates, use: [:slugged, :finders]
 
   def slug_candidates
     [
