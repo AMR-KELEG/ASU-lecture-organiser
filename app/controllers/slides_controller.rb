@@ -69,7 +69,7 @@ class SlidesController < ApplicationController
     end
 
     def set_slide
-      @slide = @lecture.slides.find(params[:id])
+      @slide = @commentable = @lecture.slides.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
