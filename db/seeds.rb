@@ -18,8 +18,8 @@ Comment.destroy_all
 
 Dir.foreach('./public/data/lectures') do |lecture_file|
   next if lecture_file == '.' or lecture_file == '..'
-  
-  lecture = Lecture.create! name: lecture_file, path: "/data/lectures/#{lecture_file}"
+
+  lecture = Lecture.create! name: lecture_file.split('.')[0], path: "/data/lectures/#{lecture_file}"
 
   Dir.foreach('./public/data/slides/' + lecture_file.split('.')[0]) do |slide_file|
     next if slide_file == '.' or slide_file == '..'

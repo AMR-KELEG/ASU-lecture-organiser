@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213142854) do
+ActiveRecord::Schema.define(version: 20151216180035) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text"
@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(version: 20151213142854) do
     t.datetime "updated_at", null: false
     t.string   "attachment"
     t.string   "path"
+    t.string   "slug"
   end
+
+  add_index "lectures", ["slug"], name: "index_lectures_on_slug"
 
   create_table "slides", force: :cascade do |t|
     t.string   "path"
