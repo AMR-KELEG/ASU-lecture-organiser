@@ -29,7 +29,8 @@ Dir.foreach('./public/data/lectures') do |lecture_file|
       })
 
     5.times do
-      comment = slide.comments.create text: ('a'..'z').to_a.shuffle[0,20].join, user: User.order("RANDOM()").first
+      slide.comments.create text: ('a'..'z').to_a.shuffle[0,20].join, user: User.order("RANDOM()").first,
+      commentable_type: 'Slide', commentable_id: slide.id
     end
   end
 end
