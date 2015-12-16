@@ -16,6 +16,8 @@ Lecture.destroy_all
 Slide.destroy_all
 Comment.destroy_all
 
+random = Random.new(Time.now.to_i)
+
 Dir.foreach('./public/data/lectures') do |lecture_file|
   next if lecture_file == '.' or lecture_file == '..'
 
@@ -29,8 +31,7 @@ Dir.foreach('./public/data/lectures') do |lecture_file|
       })
 
     5.times do
-      slide.comments.create text: ('a'..'z').to_a.shuffle[0,20].join, user: User.order("RANDOM()").first,
-      commentable_type: 'Slide', commentable_id: slide.id
+      slide.comments.create text: ('a'..'z').to_a.shuffle[0,20].join, user: User.order("RANDOM()").first, created_at: Time.now + random.rand*1000.seconds, commentable_type: 'Slide', commentable_id: slide.id
     end
   end
 end
