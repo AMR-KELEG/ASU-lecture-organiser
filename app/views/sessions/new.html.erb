@@ -1,3 +1,6 @@
+ <% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
 <h1>Login</h1>
 <%= form_for(:user,url: sessions_path) do |f| %>
 
