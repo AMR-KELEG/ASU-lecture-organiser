@@ -1,6 +1,7 @@
 class Lecture < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
+  has_many :comments, as: :commentable, dependent: :destroy
 
   def slug_candidates
     [

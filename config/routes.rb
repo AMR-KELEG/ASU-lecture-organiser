@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   root 'lectures#index'
 
   resources :lectures do
+    resources :comments, only: [:create, :destroy]
     resources :slides
   end
-  
+
   resources :slides,only:[] do
     resources :comments, only: [:create, :destroy]
   end

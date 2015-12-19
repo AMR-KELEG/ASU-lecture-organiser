@@ -61,3 +61,11 @@ Dir.foreach('./public/data/lectures') do |lecture_file|
     end
   end
 end
+
+Lecture.first.comments.create!({
+  text: ('a'..'z').to_a.shuffle[0,20].join,
+  user: User.all.sample,
+  created_at: Time.now + (random.rand * 1e5).seconds,
+  commentable_type: 'Lecture',
+  commentable_id: Lecture.first.id
+  })
