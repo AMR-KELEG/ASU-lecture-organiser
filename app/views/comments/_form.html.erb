@@ -3,6 +3,8 @@
     <%= f.label "new comment" %><br>
     <%= f.text_area :text, size: "70*5", class: "form-control" %>
   </div>
+  <input name="commentable_type" type="hidden" value=<%= @commentable.class.name %> />
+  <input name="commentable_id" type="hidden" value=<%= @commentable.id %> />
   <div class="actions">
     <%= f.submit "Post Comment", class: 'btn btn-default'%>
   </div>

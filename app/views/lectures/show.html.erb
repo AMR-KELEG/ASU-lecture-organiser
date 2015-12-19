@@ -10,6 +10,14 @@
   <% end %>
 </ol>
 
+<div class="comments">
+  <div>
+    <%= render @lecture.comments %>
+  </div>
+  <%= render '/comments/form' %>
+</div>
+
+
 <br>
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
