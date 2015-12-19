@@ -14,8 +14,14 @@ class LectureUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
+
   def store_dir
-    "data/lectures/"
+    @time_stamp = Time.now.utc.strftime('%Y%m%e%H%M%S%L')
+    "data/lectures/#{@time_stamp}"
+  end
+
+  def lecture_folder_path(time)
+    "/data/lectures/#{time}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -64,11 +70,11 @@ class LectureUploader < CarrierWave::Uploader::Base
   end
 
   def image_path(lecture_title, page_num)
-    "/data/slides/#{model.name}/#{page_num}.png"
+    "#{lecture_folder_path(@time_stamp)}/slides/#{page_num}.png"
   end
 
   def lecture_path(lecture_title)
-    "/data/lectures/#{lecture_title}.pdf"
+    "#{lecture_folder_path(@time_stamp)}/#{lecture_title}.pdf"
   end
 
   protected
