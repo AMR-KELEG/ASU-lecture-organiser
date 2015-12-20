@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use SCSS for stylesheets
@@ -31,7 +30,6 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass',       '3.2.0.0'
-gem 'friendly_id', '~> 5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,4 +56,5 @@ end
 gem 'rmagick'
 gem 'rghost'
 gem 'carrierwave'
+gem 'friendly_id', '~> 5.1'
 gem 'acts_as_votable', '~> 0.10.0'

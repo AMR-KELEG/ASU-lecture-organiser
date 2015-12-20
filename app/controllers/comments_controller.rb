@@ -4,28 +4,26 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     if @comment.save
-      redirect_to @commentable, notice: "comment successfully added" if params[:commentable_type]=='Lecture'
-      redirect_to [@commentable.lecture, @commentable], notice: "comment successfully added" if params[:commentable_type]=='Slide'
+      redirect_to :back, notice: 'comment successfully added'
     else
-      redirect_to @commentable, alert: "unable to add the comment" if params[:commentable_type]=='Lecture'
-      redirect_to [@commentable.lecture, @commentable], alert: "unable to add the comment" if params[:commentable_type]=='Slide'
+      redirect_to :back, alert: 'unable to add the comment'
     end
   end
 
   def destroy
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
-    redirect_to @commentable, notice: "comment deleted" if params[:commentable_type]=='Lecture'
-    redirect_to [@commentable.lecture, @commentable], notice: "comment deleted" if params[:commentable_type]=='Slide'
+    redirect_to :back, notice: 'comment deleted'
   end
 
   private
-    def set_commentable
-      @commentable = Slide.find(params[:commentable_id]) if params[:commentable_type]=='Slide'
-      @commentable = Lecture.find(params[:commentable_id]) if params[:commentable_type]=='Lecture'
-    end
 
-    def comment_params
-      params.require(:comment).permit(:text)
-    end
+  def set_commentable
+    @commentable = Slide.find(params[:commentable_id]) if params[:commentable_type] == 'Slide'
+    @commentable = Lecture.find(params[:commentable_id]) if params[:commentable_type] == 'Lecture'
+  end
+
+  def comment_params
+    params.require(:comment).permit(:text)
+  end
 end
