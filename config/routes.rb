@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :slides,only:[] do
     resources :comments, only: [:create, :destroy]
+    member do
+      put "like", to: "slides#upvote"
+      put "dislike", to: "slides#downvote"
+    end
   end
 
   get 'signup' => 'users#new', as: "signup"

@@ -22,8 +22,20 @@
   <%= link_to [@lecture, @slide.next], id: "next" do%>
     <div class="arrow">&#8250;</div>
   <% end %>
-
 </div>
+
+<div class= "container text-center">
+    <%= link_to like_slide_path(@slide),class: "btn btn-s btn-success" , method: :put do %>
+    <span class="glyphicon glyphicon-thumbs-up"></span> like
+    <%= @slide.get_upvotes.size %>
+    <% end %>
+
+    <%= link_to dislike_slide_path(@slide),class: "btn btn-s btn-danger", method: :put do %>
+    <span class="glyphicon glyphicon-thumbs-down"></span> dislike
+    <%= @slide.get_downvotes.size %>
+    <% end %>  
+</div>
+
 
 <div class="comments">
   <div>

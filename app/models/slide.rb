@@ -4,6 +4,7 @@ class Slide < ActiveRecord::Base
 
   belongs_to :lecture
   has_many :comments, as: :commentable, dependent: :destroy
+  acts_as_votable
 
   def next
     self.lecture.slides.find_by(page_number: page_number + 1)

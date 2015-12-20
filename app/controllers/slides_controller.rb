@@ -11,7 +11,18 @@ class SlidesController < ApplicationController
   # GET /slides/1.json
   def show
   end
+  
+  def upvote 
+    @slide = @lecture.slides.find(params[:id])
+    @slide.upvote_by current_user
+    redirect_to :back
+  end  
 
+  def downvote
+    @slide = @lecture.slides.find(params[:id])
+    @slide.downvote_by current_user
+    redirect_to :back
+  end
   # GET /slides/new
   # def new
     # @slide = @lecture.slides.new
@@ -76,4 +87,4 @@ class SlidesController < ApplicationController
     def slide_params
       params.require(:slide).permit(:path, :lecture_id)
     end
-end
+  end
