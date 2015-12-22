@@ -5,9 +5,23 @@
   <%= @slide.lecture.name %>
 </p>
 
-<div class="page_number" style="text-align: center;">
-  <h2> <%= "Page #{@slide.page_number} of #{@slide.lecture.slides.count}" %> </h2>
+<div class="dropdown" style="text-align: center">
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" >
+    <%= "page #{@slide.page_number}"%>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" style="margin-left: 43%;">
+    <% @lecture.slides.each do |slide|%>
+      <% if slide.page_number == @slide.page_number %>
+      <% else %>
+        <li><a href=<%= slide.page_number %>><%= "page #{slide.page_number}" %></a></li>
+        <% end %>
+    <% end %>
+  </ul>
+  <span><%= " of #{@lecture.slides.count}" %></span>
 </div>
+
+<br>
 
 <div class="slide-container">
 
@@ -33,7 +47,7 @@
     <%= link_to dislike_slide_path(@slide,{lecture_id: @lecture.id}),class: "btn btn-s btn-danger", method: :put do %>
     <span class="glyphicon glyphicon-thumbs-down"></span> dislike
     <%= @slide.get_downvotes.size %>
-    <% end %>  
+    <% end %>
 </div>
 
 
