@@ -29,9 +29,9 @@ random = Random.new(Time.now.to_i)
 
 Dir.foreach('./public/data/lectures') do |lecture_folder|
   next if lecture_folder == '.' or lecture_folder == '..'
-  
+
   Dir.foreach("./public/data/lectures/#{lecture_folder}") do |file|
-    next if file == '.' or file == '..' or file == 'slides' 
+    next if file == '.' or file == '..' or file == 'slides'
 
     lecture_title = file.split('.')[0]
     lecture_path = "/data/lectures/#{lecture_folder}/#{file}"
@@ -68,10 +68,13 @@ Dir.foreach('./public/data/lectures') do |lecture_folder|
   end
 end
 
-Lecture.first.comments.create!({
+lecture = Lecture.first
+if lecture
+  lecture.comments.create!({
   text: ('a'..'z').to_a.shuffle[0,20].join,
   user: User.all.sample,
   created_at: Time.now + (random.rand * 1e5).seconds,
   commentable_type: 'Lecture',
   commentable_id: Lecture.first.id
   })
+end
