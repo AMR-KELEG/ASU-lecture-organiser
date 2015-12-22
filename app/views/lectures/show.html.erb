@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1 style="text-align: center;"><%= @lecture.name %></h1>
+<h1 style="text-align: center; color:#00004d;"><%= @lecture .name %></h1>
 
-<h3>Slides</h3>
-
-<ol>
+<div class="row">
   <% @slides.each do |slide| %>
-  <li> <%= link_to slide.path, [@lecture, slide] %> </li>
-  <% end %>
-</ol>
+  <div class="col-xs-6 col-md-3">
+    <span class="thumbnail">
+      <%=link_to image_tag(slide.path), [slide.lecture, slide]%>
+    </span>
+  </div>
+ <% end %>
+</div>
 
 <div class="comments">
   <div>
