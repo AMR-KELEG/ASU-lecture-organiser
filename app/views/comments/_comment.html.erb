@@ -1,13 +1,18 @@
 <div class="comment">
   <div class="comment-head">
     <%= link_to comment.user.username, user_url(comment.user) unless comment.user.nil? %>
-    <%= content_tag :span, "(#{time_ago_in_words comment.created_at} ago)", class: "comment-title"%> |
+    <%= content_tag :span, "(#{time_ago_in_words comment.created_at} ago)", class: "comment-title"%>
 
-    <% if @slide %>
-      <%= link_to 'Delete', polymorphic_path([@slide, comment], {commentable_type: :Slide,commentable_id: @slide.id}), method: :delete%>
-    <% else if @lecture %>
-      <%= link_to 'Delete', polymorphic_path([@lecture, comment], {commentable_type: :Lecture,commentable_id: @lecture.id}), method: :delete%>
+    <% if comment && comment.user && current_user.id == comment.user.id  %>
+       |
+      <% if @slide %>
+        <%= link_to 'Delete', polymorphic_path([@slide, comment], {commentable_type: :Slide,commentable_id: @slide.id}), method: :delete%>
+      <% else if @lecture %>
+        <%= link_to 'Delete', polymorphic_path([@lecture, comment], {commentable_type: :Lecture,commentable_id: @lecture.id}), method: :delete%>
+      <% end %>
+
     <% end %>
+
     <% end %>
 
   </div>
