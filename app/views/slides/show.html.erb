@@ -53,7 +53,7 @@
 
 <div class="comments">
   <div>
-    <%= render @slide.comments.order(created_at: :desc) %>
+    <%= render @slide.comments.order(created_at: :asc) %>
   </div>
   <%= render '/comments/form' %>
 </div>
