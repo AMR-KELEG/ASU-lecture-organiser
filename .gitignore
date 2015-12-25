@@ -17,7 +17,6 @@
 /tmp
 
 public/data/*
-Gemfile.lock
 *~
 public/uploads/tmp/*
 .byebug_history
