@@ -14,7 +14,12 @@ class Lecture < ActiveRecord::Base
     charset = Array('A'..'Z') + Array('a'..'z')+Array(0..9)
     charset.shuffle[0,3].join
   end
-
+  
+  
+ 
+ def self.search(search)
+  where("name LIKE ?", "%#{search}%") 
+end
   mount_uploader :attachment, LectureUploader
   validates :name, presence: true
   has_many :slides, dependent: :destroy

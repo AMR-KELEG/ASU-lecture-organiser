@@ -13,15 +13,24 @@
   <tbody>
     <% @lectures.each do |lecture| %>
       <tr>
-        <td><%= lecture.name %></td>
+        <td><%= lecture.name  %></td>
         <td><%= link_to 'Show', lecture %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        
       </tr>
     <% end %>
   </tbody>
+
 </table>
 
-<br>
+ <%= form_tag(lectures_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Lectures" %>
+<%= submit_tag "Search" %>
+<% end %>
+     
+  
+ 
 
 <%= link_to 'New Lecture', new_lecture_path %>

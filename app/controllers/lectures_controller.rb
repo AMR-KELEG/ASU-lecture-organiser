@@ -5,10 +5,16 @@ class LecturesController < ApplicationController
   # GET /lectures.json
   def index
     @lectures = Lecture.all
+    if params[:search]
+    @lectures = Lecture.search(params[:search]).order("created_at DESC")
+  else
+    @lectures = Lecture.all.order('created_at DESC')
+  end
   end
 
   # GET /lectures/1
   # GET /lectures/1.json
+  
   def show
     @slides = @lecture.slides.order(page_number: :asc)
   end
@@ -22,8 +28,8 @@ class LecturesController < ApplicationController
   def edit
   end
 
-  # POST /lectures
-  # POST /lectures.json
+  # Lecture /lectures
+  # Lecture /lectures.json
   def create
     @lecture = Lecture.new(lecture_params)
 
