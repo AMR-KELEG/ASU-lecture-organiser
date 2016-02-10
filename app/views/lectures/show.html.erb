@@ -6,7 +6,7 @@
 
 <ol>
   <% @slides.each do |slide| %>
-  <li> <%= link_to slide.path, slide %> </li>
+  <li> <%= link_to slide.path, [@lecture, slide] %> </li>
   <% end %>
 </ol>
 

@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213142854) do
+ActiveRecord::Schema.define(version: 20151216203644) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text"
-    t.integer  "slide_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
   end
 
-  add_index "comments", ["slide_id"], name: "index_comments_on_slide_id"
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "lectures", force: :cascade do |t|
@@ -30,7 +31,10 @@ ActiveRecord::Schema.define(version: 20151213142854) do
     t.datetime "updated_at", null: false
     t.string   "attachment"
     t.string   "path"
+    t.string   "slug"
   end
+
+  add_index "lectures", ["slug"], name: "index_lectures_on_slug"
 
   create_table "slides", force: :cascade do |t|
     t.string   "path"

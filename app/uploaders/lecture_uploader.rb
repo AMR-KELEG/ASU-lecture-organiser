@@ -5,7 +5,7 @@ class LectureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
-   
+
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -32,9 +32,9 @@ class LectureUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  
+
   process :explode_to_images
-  
+
 
   #thumb = pdf.scale(300, 300)
   #thumb.write "doc.png"
@@ -53,12 +53,12 @@ class LectureUploader < CarrierWave::Uploader::Base
     pdf = Magick::ImageList.new(file.path)
     counter = 0
     pdf.each do |page|
-      slide_path = image_path(file.basename, counter)
-      model.slides.create! path:slide_path, page_number: counter
+      slide_path = image_path(file.basename, counter+1)
+      model.slides.create! path:slide_path, page_number: counter+1
 
       check_dir "public/#{slide_path}"
       page.write "public/#{slide_path}"
-      
+
       counter += 1
     end
   end
@@ -81,8 +81,8 @@ class LectureUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
-  
-  
+
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
