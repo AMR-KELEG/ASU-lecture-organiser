@@ -8,9 +8,10 @@
             <li><%= msg %></li>
          <% end %>
       </ul>
-      
+
    </div>
 <% end %>
+
 
 <div class = "well">
    <%= form_for @lecture, html: { multipart: true } do |f| %>
@@ -20,8 +21,12 @@
       <%= f.label :attachment %>
       <%= f.file_field :attachment %>
       
+      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+      
       <%= f.submit "Save", class: "btn btn-primary" %>
    <% end %>
+
 </div>
 
 <%= link_to 'Back', lectures_path %>

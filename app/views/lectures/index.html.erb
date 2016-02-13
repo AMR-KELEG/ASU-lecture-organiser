@@ -17,7 +17,7 @@
         <td><%= link_to 'Show', lecture %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+         <td>  Tags: <%= raw lecture.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %> </td>
         
       </tr>
     <% end %>

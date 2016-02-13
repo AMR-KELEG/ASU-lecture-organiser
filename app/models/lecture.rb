@@ -2,7 +2,7 @@ class Lecture < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
   has_many :comments, as: :commentable, dependent: :destroy
-
+  acts_as_taggable
   def slug_candidates
     [
       :name,
@@ -21,6 +21,6 @@ class Lecture < ActiveRecord::Base
   where("name LIKE ?", "%#{search}%") 
 end
   mount_uploader :attachment, LectureUploader
-  validates :name, presence: true
+  validates :name,:tag_list , presence: true
   has_many :slides, dependent: :destroy
 end

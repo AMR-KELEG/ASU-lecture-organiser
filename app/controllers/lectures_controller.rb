@@ -3,13 +3,17 @@ class LecturesController < ApplicationController
 
   # GET /lectures
   # GET /lectures.json
-  def index
-    @lectures = Lecture.all
-    if params[:search]
-    @lectures = Lecture.search(params[:search]).order("created_at DESC")
-  else
-    @lectures = Lecture.all.order('created_at DESC')
-  end
+   def index
+    if params[:tag]
+          @lectures = Lecture.tagged_with(params[:tag])
+    else
+          @lectures = Lecture.all
+          if params[:search]
+            @lectures = Lecture.search(params[:search]).order("created_at DESC")
+          else
+            @lectures = Lecture.all.order('created_at DESC')
+          end
+    end
   end
 
   # GET /lectures/1
@@ -34,6 +38,8 @@ class LecturesController < ApplicationController
     @lecture = Lecture.new(lecture_params)
 
     respond_to do |format|
+
+
       if @lecture.save
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
         format.json { render :show, status: :created, location: @lecture }
@@ -76,6 +82,6 @@ class LecturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lecture_params
-      params.require(:lecture).permit(:name , :attachment)
+      params.require(:lecture).permit(:name , :attachment , :tag_list)
     end
 end

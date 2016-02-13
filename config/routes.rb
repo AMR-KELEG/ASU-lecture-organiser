@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   root 'lectures#index'
+  get 'tags/:tag', to: 'lectures#index', as: :tag
 
   resources :lectures do
     resources :comments, only: [:create, :destroy]
