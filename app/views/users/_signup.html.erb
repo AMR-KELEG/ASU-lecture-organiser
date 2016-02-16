@@ -1,16 +1,5 @@
-<script src="assets/password_strength.js"></script>
-
 <div class="container col-md-2">
 </div>
-<div id="container">
-      <div id="content">  
-        <!-- form start-->
-        <form id="register">
-          <input name="password" id="password" type="password"/>
-        </form>   
-        <!-- form end-->
-      </div>
-    </div>
 
 
 <div class="container col-md-8">
@@ -33,7 +22,7 @@
       </div>
       <div class="form-group">
         <%= f.label "Password" %><br>
-        <%= f.password_field :password, class: "form-control" , id: "password" ,name:"password",type:"password"%>
+        <%= f.password_field :password, class: "form-control"%>
         <span id="result"></span>
       </div>
       <div class="form-group">
