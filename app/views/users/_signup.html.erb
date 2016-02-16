@@ -1,6 +1,7 @@
 <div class="container col-md-2">
 </div>
 
+
 <div class="container col-md-8">
   <%= form_for(@user  ) do |f| %>
       <% if @user.errors.any? %>
@@ -21,7 +22,8 @@
       </div>
       <div class="form-group">
         <%= f.label "Password" %><br>
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control"%>
+        <span id="result"></span>
       </div>
       <div class="form-group">
         <%= f.label 'Password confirmation' %><br>
