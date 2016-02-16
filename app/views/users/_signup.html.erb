@@ -1,5 +1,17 @@
+<script src="assets/password_strength.js"></script>
+
 <div class="container col-md-2">
 </div>
+<div id="container">
+      <div id="content">  
+        <!-- form start-->
+        <form id="register">
+          <input name="password" id="password" type="password"/>
+        </form>   
+        <!-- form end-->
+      </div>
+    </div>
+
 
 <div class="container col-md-8">
   <%= form_for(@user  ) do |f| %>
@@ -21,7 +33,8 @@
       </div>
       <div class="form-group">
         <%= f.label "Password" %><br>
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control" , id: "password" ,name:"password",type:"password"%>
+        <span id="result"></span>
       </div>
       <div class="form-group">
         <%= f.label 'Password confirmation' %><br>
