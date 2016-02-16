@@ -8,9 +8,9 @@ $(document).ready(function()
 		so everytime user type code will execute
 	*/
 
-	$('#password').keyup(function()
+	$('#user_password').keyup(function()
 	{
-		$('#result').html(checkStrength($('#password').val()))
+		$('#result').html(checkStrength($('#user_password').val()))
 	})	
 	
 	/*
