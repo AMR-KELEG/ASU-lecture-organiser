@@ -23,8 +23,8 @@ $(document).ready(function()
 		//initial strength
 		var strength = 0
 		
-		//if the password length is less than 6, return message.
-		if (password.length < 6) { 
+		//if the password length is less than 8, return message.
+		if (password.length < 8) { 
 			$('#result').removeClass()
 			$('#result').addClass('short')
 			return 'Too short' 
@@ -32,8 +32,8 @@ $(document).ready(function()
 		
 		//length is ok, lets continue.
 		
-		//if length is 8 characters or more, increase strength value
-		if (password.length > 7) strength += 1
+		//if length is 9 characters or more, increase strength value
+		if (password.length > 8) strength += 1
 		
 		//if password contains both lower and uppercase characters, increase strength value
 		if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  strength += 1
