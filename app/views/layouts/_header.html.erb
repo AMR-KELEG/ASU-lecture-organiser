@@ -10,7 +10,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <%if logged_in? %>
-        <li><%=link_to "Welcome " + current_user.username, '#' %></li>
+        <li><%=link_to "Welcome " + current_user.username, profile_path %></li>
         <li><%= link_to 'Logout', logout_path,method: :delete %> </li>
         <% else %>
         <li><%= link_to 'Login', login_path %></li>
