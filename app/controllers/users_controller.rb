@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   skip_before_action :ensure_login, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
+  def getprofile
+    #@user=current_user
+  end
   # GET /users
   # GET /users.json
   def index
