@@ -9,7 +9,8 @@ class LecturesController < ApplicationController
     else
           @lectures = Lecture.all
           if params[:search]
-            @lectures = Lecture.search(params[:search]).order("created_at DESC")
+            @lectures = Lecture.search(params[:search])|Lecture.tagged_with(params[:search])
+            .order("created_at DESC")
           else
             @lectures = Lecture.all.order('created_at DESC')
           end
