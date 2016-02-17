@@ -1,6 +1,161 @@
-/* @group core */
-.wrapper { width: 850px; overflow: hidden; margin: 0 auto; background: none; }
+/* go on then, styles go here.. knock yourself out! */
 
-content { display: block; width: 820px; margin: 0 auto;  }
-left { display: block; width: 560px; float: left; overflow: hidden; margin-right: 20px; }
-right { display: block; width: 240px; float: left; overflow: hidden; }
+/*
+ * Envato Remix 2 Submission
+ * Author : Surjith S M
+ * URL: http://themeforest.net/user/surjithctly
+ * version: 1.0
+ * Last Updated : 16 June 2015
+ */
+
+/*Web fonts please..*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,300,700,400);
+
+/*Lets start*/
+
+html, body {
+  min-height:100%;
+}
+
+body {
+  background:#3b4864 url('http://i.imgur.com/X3wxCv8.png') no-repeat center;
+  background-size:cover;
+  font-family: 'Roboto', sans-serif;
+  font-weight:300;
+  color:#959b9c;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  line-height:1.6;
+  text-align:center;
+  font-size:18px;
+  font-weight:400;
+}
+
+/*Oh the Card. Here you go*/
+.profile-card {
+  max-width:600px;
+  background:#FFF;
+  margin:100px auto;
+  border-radius:5px;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  animation: fadeIn 2s;
+  transition:all 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.profile-card header a {
+  display:block;
+  background: #ccc url('http://i.imgur.com/a7Y45A6.jpg') no-repeat;
+  background-size:cover;
+  min-height:220px;
+  margin-bottom:70px;
+  position:relative;  
+  transition: all 2s ease;
+} 
+.profile-card header a:hover {
+ transform: scale(1.02);
+}
+
+/*umm The Avatar.. Swoosh!! */
+.profile-card header img {
+  border: solid 3px #FFF;
+  display: block;
+  border-width: 4px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.20);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.20);
+  position:absolute;
+  bottom:-40px;
+  left:50%;
+  max-width:100px;
+  transform: translateX(-50%);
+}
+
+.profile-card header h1, .profile-card header h2 {
+  margin:5px 30px;
+  text-align:center;
+}
+.profile-card header h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight:500;
+  color:#448ad1;
+}
+
+.profile-card header h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight:400;
+  font-size:14px;
+  text-transform:inherit;
+  color:#aeaeae;
+}
+
+/*You.. there.. bio*/
+.profile-bio {
+  margin:30px;
+}
+
+/*Be Social*/
+
+.profile-social-links {
+  list-style:none;  
+  display:table;
+  width:100%;
+  border-top:1px solid #ededed;
+  margin:0;
+  padding:0;
+}
+
+.profile-social-links li {
+  display:table-cell;
+  min-width: 1px;
+}
+
+.profile-social-links li a {
+  padding:20px 5px;
+  display:block;
+  text-align:center;
+  border-left:1px solid #ededed;
+  transition: all 0.5s ease;
+}
+
+.profile-social-links li:first-child a {
+  border-left:0;
+}
+
+.profile-social-links li img {
+ max-width:30px;
+  filter: grayscale(100%);
+  opacity:0.5;
+  transition: all 0.5s ease;
+}
+.profile-social-links li:last-child img {
+opacity:0.2;
+}
+.profile-social-links a:hover {
+  background:#f6f6f6;
+}
+.profile-social-links a:hover img {
+  filter: grayscale(0%);
+  opacity:1;
+}
+
+
+/* Animations Area 
+   Warning: Entry Restricted
+ */
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
