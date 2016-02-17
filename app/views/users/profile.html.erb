@@ -1,0 +1,42 @@
+<!-- this is the markup. you can change the details (your own name, your own avatar etc.) but don’t change the basic structure! -->
+
+<aside class="profile-card">
+  
+  <header>
+    
+    <a href="">
+      <img src="https://placehold.it/150x150">
+    </a>
+
+    <h1><%= current_user.firstname %>&nbsp<%= current_user.surname %></h1>
+    <h2>User Since <%= current_user.created_at.strftime("%d %b %Y")%></h2>
+    
+  </header>
+  
+  <!-- bit of a bio; who are you? 
+  <div class="profile-bio">
+    
+    <p>Web designer with over 6 years experience in designing and developing outstanding products for web and mobile.</p>
+    
+  </div>
+  -->
+  <!-- some social links to show off -->
+  <ul class="profile-social-links">
+    
+    <!-- Edit Profile  -->
+    <li>
+    <%= link_to image_tag("https://cdn3.iconfinder.com/data/icons/simplius-pack/512/pencil_and_paper-512.png"), edit_user_path(current_user.id), {:class => 'dock-item'}%>
+
+    </li>
+
+    <!-- View Lectures -->
+    <li>
+    <%= link_to image_tag("https://cdn0.iconfinder.com/data/icons/thin-gui-elements-1/24/thin-0179_layers_slides-128.png"),{:action => 'index', :controller => 'lectures'} , {:class => 'dock-item'}%>
+
+    </li>
+    
+    
+  </ul>
+  
+</aside>
+<!-- that’s all folks! -->
