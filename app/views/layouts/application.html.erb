@@ -5,30 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <nav>
-      <ul class="nav navbar-nav navbar-left">
-        <li><%= image_tag 'https://placehold.it/150x50', alt: 'App Logo', id: "logo" %></li>
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Lectures', lectures_path %></li>
-        <li><%= link_to 'Users', users_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <%if logged_in? %>
-        <li><%=link_to "Welcome " + current_user.username, '#' %></li>
-        <li><%= link_to 'Logout', logout_path,method: :delete %> </li>
-        <% else %>
-        <li><%= link_to 'Login', login_path %></li>
-        <li><%= link_to 'Sign up', signup_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+<% unless current_page?(login_path)||current_page?(signup_path) %>
+  <%= render 'layouts/header' %>
+<% end %> 
 
 <div class="container">
   <%= yield %>
