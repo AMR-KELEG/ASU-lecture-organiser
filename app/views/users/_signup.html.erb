@@ -21,6 +21,16 @@
     <div class="alert"><%= flash[:alert] %></div>
   <% end %>
 <h1 style="font-family: 'Lobster', cursive; color: grey;"><center>Sign Up</center></h1><hr>
+      
+
+      <div class="form-group">
+          <div class="field"><%= f.text_field :firstname ,placeholder: "First name", class: "form-style" %></div>
+      </div>
+      <div class="form-group">
+          <div class="field"><%= f.text_field :surname ,placeholder: "Surname", class: "form-style" %></div>
+      </div>
+      
+
       <div class="form-group">
           <div class="field"><%= f.text_field :username,placeholder: "Username", class: "form-style" %></div>
       </div>
