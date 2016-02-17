@@ -1,32 +1,18 @@
- 
+<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <body>
 <div id="formWrapper">
-
 <div id="form">
-<div class="logo">
-
-</div>
-		
-		
-		
-		
 <% if flash[:alert] %>
     <div class="alert"><%= flash[:alert] %></div>
   <% end %>
-<h1><center>Welcome</center></h1>
+<h1 style="font-family: 'Lobster', cursive; color: grey;"><center>Welcome</center></h1><hr>
 <%= form_for(:user,url: sessions_path) do |f| %>
-
-	<div class="field"><%= f.label :Username %><br/><%= f.text_field :username, class: "form-style" %></div>
-
-	<div class="field"><%= f.label :Password %><br/><%= f.password_field :password,class: "form-style" %></div>
-
-	<div  class="actions" > <%=  f.submit "Login" ,class: "login pull-right"%> </div>
-     <div ><%= link_to 'Sign up', signup_path %></div>
-
-
-<% end %>	
-
-
+	<div class="field"><%= f.text_field :username,placeholder: "Username", class: "form-style" %></div>
+	<div class="field"><%= f.password_field :password,placeholder: "Password" ,class: "form-style" %></div>
+	<div  class="actions" > <%=  f.submit "Login" ,class: "login pull-left"%> </div>
+	<br> <hr>
+    <div ><%= link_to 'Create an account', signup_path, class:"login pull-right" %></div>
+<% end %>
 </div>
 </div>
 </body>
