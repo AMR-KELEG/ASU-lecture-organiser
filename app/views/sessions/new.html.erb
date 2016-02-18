@@ -1,18 +1,20 @@
-<body>
-<div id="formWrapper">
-<div id="form">
-<% if flash[:alert] %>
-    <div class="alert"><%= flash[:alert] %></div>
-  <% end %>
-<h1 style="font-family: 'Lobster', cursive; color: grey;"><center>Welcome</center></h1><hr>
-<%= form_for(:user,url: sessions_path) do |f| %>
-	<div class="field"><%= f.text_field :username,placeholder: "Username", class: "form-style" %></div>
-	<div class="field"><%= f.password_field :password,placeholder: "Password" ,class: "form-style" %></div>
-	<div  class="actions" > <%=  f.submit "Login" ,class: "login pull-left"%> </div>
-	<br> <hr>
-    <div ><%= link_to 'Create an account', signup_path, class:"login pull-right" %></div>
-<% end %>
+<div class="container col-md-2">
 </div>
+	
+<div class="container col-md-8">
+	<div id="formWrapper" , class="col-lg-4 col-lg-offset-3">
+		<div id="form">
+			<% if flash[:alert] %>
+			    <div class="alert"><%= flash[:alert] %></div>
+			 <% end %>
+			<h1 style="font-family: 'Lobster', cursive; color: grey;"><center>Welcome</center></h1><hr>
+			<%= form_for(:user,url: sessions_path) do |f| %>
+				<div class="field"><%= f.text_field :username,placeholder: "Username", class: "form-style" %></div>
+				<div class="field"><%= f.password_field :password,placeholder: "Password" ,class: "form-style" %></div>
+				<div  class="actions" > <%=  f.submit "Login" ,class: "login pull-left"%> </div>
+				<br> <hr>
+			    <div ><%= link_to 'Create an account', signup_path, class:"login pull-right" %></div>
+			<% end %>
+		</div>
+	</div>
 </div>
-</body>
-</html>

@@ -1,10 +1,13 @@
 <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<div style = class="container col-md-2"> </div>
+<div class="container col-md-2">
+</div>
+
 <div class="container col-md-8">
   <%= form_for(@user  ) do |f| %>
       <% if @user.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
             <ul>
               <% @user.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
@@ -12,44 +15,42 @@
             </ul>
           </div>
       <% end %>
-  <%= form_for(:user,url: sessions_path) do |f| %>
-</div>
-<body>
-<div id="formWrapper">
-<div id="form">
-<% if flash[:alert] %>
-    <div class="alert"><%= flash[:alert] %></div>
-  <% end %>
-<h1 style="font-family: 'Lobster', cursive; color: grey;"><center>Sign Up</center></h1><hr>
-      
 
+      <div id="formWrapper" , class="col-lg-4 col-lg-offset-3">
+        <div id="form" >
+      <h1 style="font-family: 'Lobster', cursive; color: grey;"><center>Sign Up</center></h1><hr>
       <div class="form-group">
-          <div class="field"><%= f.text_field :firstname ,placeholder: "First name", class: "form-style" %></div>
-      </div>
-      <div class="form-group">
-          <div class="field"><%= f.text_field :surname ,placeholder: "Surname", class: "form-style" %></div>
-      </div>
-      
-
-      <div class="form-group">
-          <div class="field"><%= f.text_field :username,placeholder: "Username", class: "form-style" %></div>
-      </div>
-      <div class="form-group">
-        <div class="field"><%= f.password_field :password,placeholder: "Password", class: "form-style" %></div>
-        <span id="result"></span>
-      </div>
-      <div class="form-group">
-        <div class="field"><%= f.password_field :password_confirmation,placeholder: "Password Confirmation", class: "form-style" %></div>
+              <div class="field"><%= f.text_field :firstname ,placeholder: "First name", class: "form-style" %></div>
       </div>
 
       <div class="form-group">
-        <%= f.submit "Create", class: 'login' %>
+              <div class="field"><%= f.text_field :surname ,placeholder: "Surname", class: "form-style" %></div>
+          </div>
+          
+
+      <div class="form-group">
+              <div class="field"><%= f.text_field :username,placeholder: "Username", class: "form-style" %></div>
+      </div>
+      <div class="form-group">
+            <div class="field"><%= f.password_field :password,placeholder: "Password", class: "form-style" %></div>
+            <span id="result"></span>
+      </div>
+      <div class="form-group">
+            <div class="field"><%= f.password_field :password_confirmation,placeholder: "Password Confirmation", class: "form-style" %></div>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'login' %>
         <%= link_to "Back", root_path, class: 'btn' %>
       </div>
+    </div>
+  </div>
   <% end %>
 </div>
-<% end %>
-</div>
-</div>
-</body>
-</html>
+
+
+
+
+
+
+
+
