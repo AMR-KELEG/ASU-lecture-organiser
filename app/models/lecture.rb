@@ -21,6 +21,6 @@ class Lecture < ActiveRecord::Base
   where("name LIKE ?", "%#{search}%") 
 end
   mount_uploader :attachment, LectureUploader
-  validates :name,:tag_list , presence: true
+  validates :name, presence: true
   has_many :slides, dependent: :destroy
 end
