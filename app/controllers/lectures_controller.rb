@@ -17,6 +17,9 @@ class LecturesController < ApplicationController
     end
   end
 
+  def getlectures
+    @lectures =Lecture.all.select { |l| l.user_id == current_user.id }
+  end
   # GET /lectures/1
   # GET /lectures/1.json
   
@@ -37,7 +40,6 @@ class LecturesController < ApplicationController
   # Lecture /lectures.json
   def create
     @lecture = Lecture.new(lecture_params)
-
     respond_to do |format|
 
 
@@ -83,6 +85,6 @@ class LecturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lecture_params
-      params.require(:lecture).permit(:name , :attachment , :tag_list)
+      params.require(:lecture).permit(:name , :attachment , :tag_list ,:user_id) if params[:lecture]
     end
 end

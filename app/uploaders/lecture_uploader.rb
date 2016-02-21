@@ -56,6 +56,7 @@ class LectureUploader < CarrierWave::Uploader::Base
   def explode_to_images
     model.path = lecture_path(file.basename)
     model.tag_list=["TODO: must fix this"]
+    model.user_id=10    
     model.save!
     pdf = Magick::ImageList.new(file.path)
     counter = 0
