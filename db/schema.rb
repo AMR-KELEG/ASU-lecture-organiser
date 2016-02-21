@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217162257) do
+ActiveRecord::Schema.define(version: 20160220233300) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "text"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160217162257) do
     t.string   "attachment"
     t.string   "path"
     t.string   "slug"
+    t.integer  "user_id",    null: false
   end
 
   add_index "lectures", ["slug"], name: "index_lectures_on_slug"

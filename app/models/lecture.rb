@@ -3,6 +3,7 @@ class Lecture < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged, :finders]
   has_many :comments, as: :commentable, dependent: :destroy
   acts_as_taggable
+  
   def slug_candidates
     [
       :name,
